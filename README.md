@@ -6,4 +6,6 @@ MagicLeda适用于EGo1板卡（依元素科技），搭载芯片型号为XC7A35T
 
 https://e-elements.readthedocs.io/zh/ego1_v2.2/EGo11.html
 
-xc7a35tcsg324-1
+FPGA型号：xc7a35tcsg324-1
+
+Flash型号：n25q64-3.3v-spi-x1_x2_x4
