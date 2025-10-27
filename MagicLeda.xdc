@@ -1,11 +1,10 @@
 set_property PACKAGE_PIN P17 [get_ports {clk}]
-set_property PACKAGE_PIN S6  [get_ports {reset}]
+set_property PACKAGE_PIN R15 [get_ports {reset}]
 
 set_property PACKAGE_PIN R11 [get_ports {io_m_key[0]}]
 set_property PACKAGE_PIN R17 [get_ports {io_m_key[1]}]
-set_property PACKAGE_PIN R15 [get_ports {io_m_key[2]}]
-set_property PACKAGE_PIN V1  [get_ports {io_m_key[3]}]
-set_property PACKAGE_PIN U4  [get_ports {io_m_key[4]}]
+set_property PACKAGE_PIN V1  [get_ports {io_m_key[2]}]
+set_property PACKAGE_PIN U4  [get_ports {io_m_key[3]}]
 
 set_property PACKAGE_PIN T5  [get_ports {io_m_switch_0[0]}]
 set_property PACKAGE_PIN T3  [get_ports {io_m_switch_0[1]}]
