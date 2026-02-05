@@ -5,28 +5,25 @@ import spinal.lib._
 import spinal.lib.io.TriState
 
 case class MagicLeda() extends Bundle with IMasterSlave {
-  val key = Vec(master(TriState(Bool())), 8)
-  val switch = Vec(Vec(master(TriState(Bool())), 8), 2)
-  val led = Vec(Vec(master(TriState(Bool())), 8), 2)
+  val key = Vec(TriState(Bool()), 8)
+  val switch = Vec(Vec(TriState(Bool()), 8), 2)
+  val led = Vec(Vec(TriState(Bool()), 8), 2)
 
-  key.foreach { t =>
+  def defaultTri(t: TriState[Bool]): Unit = {
+    t.read.default(False)
     t.write.default(False)
     t.writeEnable.default(False)
   }
+  def defaultTriVec1(trivec1: Vec[TriState[Bool]]): Unit = trivec1.foreach { defaultTri(_) }
+  def defaultTriVec2(trivec2: Vec[Vec[TriState[Bool]]]): Unit = trivec2.foreach { defaultTriVec1(_) }
 
-  switch.foreach { p =>
-    p.foreach { t =>
-      t.write.default(False)
-      t.writeEnable.default(False)
-    }
+  defaultTriVec1(key)
+  defaultTriVec2(switch)
+  defaultTriVec2(led)
+
+  override def asMaster(): Unit = {
+    key.foreach { t => master(t) }
+    switch.foreach { p => p.foreach { t => master(t) } }
+    led.foreach { p => p.foreach { t => master(t) } }
   }
-
-  led.foreach { p =>
-    p.foreach { t =>
-      t.write.default(False)
-      t.writeEnable.default(False)
-    }
-  }
-
-  override def asMaster(): Unit = {}
 }
