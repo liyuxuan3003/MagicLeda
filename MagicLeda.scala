@@ -9,7 +9,24 @@ case class MagicLeda() extends Bundle with IMasterSlave {
   val switch = Vec(Vec(master(TriState(Bool())), 8), 2)
   val led = Vec(Vec(master(TriState(Bool())), 8), 2)
 
-  // led.default(Vec(B(0, 8 bits), 2))
+  key.foreach { t =>
+    t.write.default(False)
+    t.writeEnable.default(False)
+  }
+
+  switch.foreach { p =>
+    p.foreach { t =>
+      t.write.default(False)
+      t.writeEnable.default(False)
+    }
+  }
+
+  led.foreach { p =>
+    p.foreach { t =>
+      t.write.default(False)
+      t.writeEnable.default(False)
+    }
+  }
 
   override def asMaster(): Unit = {}
 }
