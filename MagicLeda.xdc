@@ -50,4 +50,4 @@ set_property IOSTANDARD LVCMOS33 [get_ports {io_m_switch_1[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_led_0[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_led_1[*]}]
 
-create_clock -name clk -period 100.0 [get_ports clk]
+create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]
