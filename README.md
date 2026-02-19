@@ -95,8 +95,8 @@ case class DigitPin() extends Bundle {
 `digit`中，`0`对应右侧的4个数码管，`1`对应左侧的4个数码管。
 
 `digit`下有`seg`和`sel`分别对应段选和位选信号，两者都是高电平有效不需要反转。
-- `seg(7 downto 0)`对应的段码从高位到低位依次是`dp, a, b, c, d, e, f, g`。
-- `sel(3 downto 0)`对应的数码管是从左到右的。
+- `seg(7 downto 0)`对应的段码，从高位到低位依次是`dp, a, b, c, d, e, f, g`。
+- `sel(3 downto 0)`对应的位码，从高位到低位依次控制从左到右的数码管。
 
 ## 板卡操作流程
 当使用`make load`时，JP3应当在加载期间被短接。
