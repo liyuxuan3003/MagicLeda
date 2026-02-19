@@ -71,8 +71,8 @@ case class TopLevel() extends Component {
     val m = master(magicleda.MagicLeda())
   }
 
-  val top = Test()
-  // Connect io.m to io port of your top "Test()" here
+  val top = MyTop()
+  // Connect io.m to io port of your top "MyTop()" here
 }
 ```
 
