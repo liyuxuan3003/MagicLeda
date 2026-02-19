@@ -49,7 +49,7 @@ set_property PACKAGE_PIN B1  [get_ports {io_m_digit_0_seg[3]}]
 set_property PACKAGE_PIN A1  [get_ports {io_m_digit_0_seg[4]}]
 set_property PACKAGE_PIN B3  [get_ports {io_m_digit_0_seg[5]}]
 set_property PACKAGE_PIN B2  [get_ports {io_m_digit_0_seg[6]}]
-set_property PACKAGE_PIN D4  [get_ports {io_m_digit_0_seg[7]}]
+set_property PACKAGE_PIN D5  [get_ports {io_m_digit_0_seg[7]}]
 
 set_property PACKAGE_PIN D4  [get_ports {io_m_digit_1_seg[0]}]
 set_property PACKAGE_PIN E3  [get_ports {io_m_digit_1_seg[1]}]
