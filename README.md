@@ -64,15 +64,15 @@ include makefile-spinal/makefile-spinal.mk
 ## 使用方式
 MagicLeda要求你的`TopLevel`是一个额外的顶层，用于包裹真正的顶层模块，并将其逻辑IO（乘法器的输入输出）和板上元件的IO（板上的开关和LED灯）连接在一起。
 
-MagicLeda要求你的`TopLevel`的`io`中有且仅能有一项名为`m`且值为`master(magicleda.MagicLeda())`的变量，请注意，名称必须是`m`，因为`MagicLeda.xdc`对接口和引脚的连接是基于这一假设编写的。随后，你可以在接下来的代码实例化你真正的顶层模块，比如`Test`并实例化为`top`，并将`top`的IO接口和`io.m`中提供的对应实际板上器件的IO接口连接在一起。
+MagicLeda要求你的`TopLevel`的`io`中有且仅能有一项名为`m`且值为`master(magicleda.MagicLeda())`的变量，请注意，名称必须是`m`，因为`MagicLeda.xdc`对接口和引脚的连接是基于这一假设编写的。随后，你可以在接下来的代码实例化你真正的顶层模块，比如`MyTop`并实例化为`top`，并将`top`的IO接口和`io.m`中提供的对应实际板上器件的IO接口连接在一起。
 ```
 case class TopLevel() extends Component {
   val io = new Bundle {
     val m = master(magicleda.MagicLeda())
   }
 
-  val top = Test()
-  // Connect io.m to io port of your top "Test()" here
+  val top = MyTop()
+  // Connect io.m to io port of your top "MyTop()" here
 }
 ```
 
@@ -81,10 +81,22 @@ MagicLeda目前提供了以下接口（通过`io.m.`访问）
 val key = Bits(4 bits)
 val switch = Vec(Bits(8 bits), 2)
 val led = Vec(Bits(8 bits), 2)
+val digit = Vec(DigitPin(), 2)
+
+case class DigitPin() extends Bundle {
+  val seg = Bits(8 bits)
+  val sel = Bits(4 bits)
+}
 ```
 `key`的`0,1,2,3`的顺序是：右、下、左、上。中间按钮被用于复位信号。
 
 `switch`和`led`中，`0`对应右侧较小的开关和LED灯，`1`对应左侧较大的开关和LED灯。
+
+`digit`中，`0`对应右侧的4个数码管，`1`对应左侧的4个数码管。
+
+`digit`下有`seg`和`sel`分别对应段选和位选信号，两者都是高电平有效不需要反转。
+- `seg(7 downto 0)`对应的段码，从高位到低位依次是`dp, a, b, c, d, e, f, g`。
+- `sel(3 downto 0)`对应的位码，从高位到低位依次控制从左到右的数码管。
 
 ## 板卡操作流程
 当使用`make load`时，JP3应当在加载期间被短接。
