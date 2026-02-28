@@ -70,8 +70,8 @@ set_property PACKAGE_PIN C1  [get_ports {io_m_digit_1_sel[1]}]
 set_property PACKAGE_PIN C2  [get_ports {io_m_digit_1_sel[2]}]
 set_property PACKAGE_PIN G2  [get_ports {io_m_digit_1_sel[3]}]
 
-set_property PACKAGE_PIN T4  [get_ports {io_m_uart_rx}]
-set_property PACKAGE_PIN N5  [get_ports {io_m_uart_tx}]
+set_property PACKAGE_PIN N5  [get_ports {io_m_uart_rx}]
+set_property PACKAGE_PIN T4  [get_ports {io_m_uart_tx}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
 set_property IOSTANDARD LVCMOS33 [get_ports {reset}]
