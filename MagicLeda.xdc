@@ -70,6 +70,9 @@ set_property PACKAGE_PIN C1  [get_ports {io_m_digit_1_sel[1]}]
 set_property PACKAGE_PIN C2  [get_ports {io_m_digit_1_sel[2]}]
 set_property PACKAGE_PIN G2  [get_ports {io_m_digit_1_sel[3]}]
 
+set_property PACKAGE_PIN N5  [get_ports {io_m_uart_rx}]
+set_property PACKAGE_PIN T4  [get_ports {io_m_uart_tx}]
+
 set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
 set_property IOSTANDARD LVCMOS33 [get_ports {reset}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_key[*]}]
@@ -81,5 +84,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {io_m_digit_0_seg[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_digit_1_seg[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_digit_0_sel[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {io_m_digit_1_sel[*]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {io_m_uart_rx}]
+set_property IOSTANDARD LVCMOS33 [get_ports {io_m_uart_tx}]
 
 create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]
