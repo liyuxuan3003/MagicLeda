@@ -17,7 +17,6 @@ case class MagicLeda() extends Bundle with IMasterSlave {
   led.default(Vec(B(0, 8 bits), 2))
   digit.default(Vec(DigitPin(), 2))
   uart.default(UartPin())
-  pin.default(B(0, 32 bits))
 
   override def asMaster(): Unit = {
     in(key, switch)
