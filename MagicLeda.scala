@@ -44,3 +44,16 @@ case class UartPin() extends Bundle with IMasterSlave {
     out(tx)
   }
 }
+
+case class SpiPin() extends Bundle with IMasterSlave {
+  val sclk = Bool()
+  val miso = Bool()
+  val mosi = Bool()
+  sclk.default(False)
+  miso.default(False)
+  mosi.default(False)
+  override def asMaster(): Unit = {
+    in(miso)
+    out(sclk, mosi)
+  }
+}
