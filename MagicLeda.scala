@@ -10,16 +10,19 @@ case class MagicLeda() extends Bundle with IMasterSlave {
   val led = Vec(Bits(8 bits), 2)
   val digit = Vec(DigitPin(), 2)
   val uart = UartPin()
+  val pin = Analog(Bits(32 bits))
 
   key.default(B(0, 4 bits))
   switch.default(Vec(B(0, 8 bits), 2))
   led.default(Vec(B(0, 8 bits), 2))
   digit.default(Vec(DigitPin(), 2))
   uart.default(UartPin())
+  pin.default(B(0, 32 bits))
 
   override def asMaster(): Unit = {
     in(key, switch)
     out(led, digit)
+    inout(pin)
     master(uart)
   }
 }
