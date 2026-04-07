@@ -83,6 +83,7 @@ val switch = Vec(Bits(8 bits), 2)
 val led = Vec(Bits(8 bits), 2)
 val digit = Vec(DigitPin(), 2)
 val uart = UartPin()
+val pin = Analog(Bits(32 bits))
 
 case class DigitPin() extends Bundle {
   val seg = Bits(8 bits)
@@ -92,6 +93,12 @@ case class DigitPin() extends Bundle {
 case class UartPin() extends Bundle {
   val tx = Bool()
   val rx = Bool()
+}
+
+case class SpiPin() extends Bundle with IMasterSlave {
+  val sclk = Bool()
+  val miso = Bool()
+  val mosi = Bool()
 }
 ```
 `key`的`0,1,2,3`的顺序是：右、下、左、上。中间按钮被用于复位信号。
@@ -105,6 +112,8 @@ case class UartPin() extends Bundle {
 - `sel(3 downto 0)`对应的位码，从高位到低位依次控制从左到右的数码管。
 
 `uart`中，`tx`是FPGA的发送端，`rx`是FPGA的接收端。
+
+`pin`是板卡左侧的扩展引脚，顺序是：从右至左，从下到上。特别注意最上面两行是电源和地。
 
 ## 板卡操作流程
 当使用`make load`时，JP3应当在加载期间被短接。
