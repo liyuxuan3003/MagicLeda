@@ -95,7 +95,7 @@ case class UartPin() extends Bundle {
   val rx = Bool()
 }
 
-case class SpiPin() extends Bundle with IMasterSlave {
+case class SpiPin() extends Bundle {
   val sclk = Bool()
   val miso = Bool()
   val mosi = Bool()
